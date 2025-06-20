@@ -24,6 +24,95 @@ ChartJS.register(
   Title
 );
 
+// Static mapping of exercise names to GIF URLs
+const exerciseGifs = {
+  "Push-ups": "/gifs/pushup.gif",
+  "Push-up": "/gifs/pushup.gif",
+  "Bodyweight Squats": "/gifs/squat.gif",
+  "Squat": "/gifs/squat.gif",
+  "Plank": "/gifs/plank.gif",
+  "Lunges": "/gifs/lunge.gif",
+  "Lunge": "/gifs/lunge.gif",
+  "Burpees": "/gifs/burpee.gif",
+  "Burpee": "/gifs/burpee.gif",
+  "Decline Push-ups": "https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif",
+  "Incline Push-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Diamond Push-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Wide Push-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Pike Push-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Handstand Push-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Overhead Press": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Chest Press (No Anchor)": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Chest Press": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Triceps Extensions": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Triceps Kickbacks": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Overhead Triceps Extension": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Sumo Squats (Bodyweight/Band)": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Bulgarian Split Squat": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Goblet Squat": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Jump Squats": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Bodyweight Lunges": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Reverse Lunges": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Walking Lunges": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Step-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Calf Raises": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Seated Calf Raises": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Inverted Rows / Table Rows": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Inverted Rows": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Table Rows": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Rows (Seated)": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Pull-Aparts": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Bicep Curls": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Hammer Curls with Band": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Bicep Curls": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Dumbbell Curls": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Chin-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Pull-ups": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Lat Pulldowns": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Lat Pulldowns (Kneeling)": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Face Pulls with Band": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Superman Holds": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Glute Bridge / Band Hip Thrusts": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Hip Thrusts": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Single-Leg Romanian Deadlifts": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Band Hamstring Curls (Lying)": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Hamstring Curls": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Side Plank": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Crunches / Reverse Crunches": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Crunches": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Reverse Crunches": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Russian Twists": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Leg Raises": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Mountain Climbers": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Jumping Jacks": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "High Knees": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Butt Kicks": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Bear Crawl": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Farmer's Walk": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Wall Sit": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Dead Bug": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  "Superman": "https://media.giphy.com/media/3o7TKzP6vQfQbQwYlC/giphy.gif",
+  // Add more as needed
+};
+
+// Plan Generator dropdown options
+const routineOptions = [
+  "Push/Pull/Legs",
+  "Full Body",
+  "Upper/Lower",
+  "Bro Split",
+  "Other"
+];
+const equipmentOptions = [
+  "Bodyweight",
+  "Resistance Bands",
+  "Dumbbells",
+  "Barbell",
+  "Kettlebell",
+  "Pull-up Bar",
+  "Other"
+];
+
 export default function Home() {
   // Tab state
   const [mainTab, setMainTab] = useState("push");
@@ -34,6 +123,13 @@ export default function Home() {
   const [modalExercise, setModalExercise] = useState(null);
   const [modalContent, setModalContent] = useState(null);
   const [modalLoading, setModalLoading] = useState(false);
+
+  // New state for plan generator
+  const [routineInput, setRoutineInput] = useState("Push/Pull/Legs");
+  const [equipmentInput, setEquipmentInput] = useState("Bodyweight, Resistance Bands");
+  const [generatedPlan, setGeneratedPlan] = useState(null);
+  const [loadingPlan, setLoadingPlan] = useState(false);
+  const [generatedPlanCollapsed, setGeneratedPlanCollapsed] = useState(false);
 
   // Data
   const pushDay1Exercises = [
@@ -175,7 +271,6 @@ export default function Home() {
     const apiKey = "AIzaSyD-PLACEHOLDER-KEY";
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
-
     const prompt = `As an expert fitness coach, suggest 3 beginner and 3 advanced variations for the "${exerciseName}" exercise, which primarily targets ${muscleGroup}. For each variation, provide a very brief explanation of how to perform it or its key benefit. Format the response in Markdown with clear headings for 'Beginner Variations' and 'Advanced Variations'.`;
     const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
     const payload = { contents: chatHistory };
@@ -201,6 +296,60 @@ export default function Home() {
       setModalContent(`Error: ${error.message}. Could not connect to the API.`);
     } finally {
       setModalLoading(false);
+    }
+  }
+
+  // New function to generate a workout plan
+  async function handleGeneratePlan() {
+    setLoadingPlan(true);
+    setGeneratedPlan(null);
+    const apiKey = "AIzaSyCaHDlMRz4BlCqpEPAsFttEmNPBM7SRvMc"; // IMPORTANT: Replace with your actual key
+    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    const prompt = `
+      As an expert fitness coach, create a detailed weekly workout plan based on the following specifications.
+      The user wants a "${routineInput}" split and has the following equipment: "${equipmentInput}".
+
+      Please provide the plan as a JSON array, where each element is a workout day object with the following structure:
+      { "day": "Push Day 1", "exercises": [ { "name": "Push-ups", "sets": "3-4", "reps": "AMRAP", "details": "A classic bodyweight exercise for chest, shoulders, and triceps." }, ... ] }
+      Do not include any explanations or text outside the JSON array. Only output the JSON array.
+    `;
+
+    const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+    const payload = { contents: chatHistory };
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await response.json();
+      let planJson = null;
+      if (
+        result.candidates &&
+        result.candidates[0].content &&
+        result.candidates[0].content.parts
+      ) {
+        // Try to parse the first code block as JSON
+        const text = result.candidates[0].content.parts[0].text;
+        try {
+          // Extract JSON from code block if present
+          const match = text.match(/```json([\s\S]*?)```/);
+          const jsonString = match ? match[1] : text;
+          planJson = JSON.parse(jsonString);
+        } catch (e) {
+          setGeneratedPlan("Error: Could not parse the AI response as JSON. Please try again or adjust your prompt.");
+          setLoadingPlan(false);
+          return;
+        }
+        setGeneratedPlan(planJson);
+      } else {
+        setGeneratedPlan("Error: Failed to generate a plan. The AI model returned an unexpected response. Please check the console for details.");
+        console.error("AI Response Error:", result);
+      }
+    } catch (error) {
+      setGeneratedPlan(`Error: ${error.message}. Could not connect to the API. Make sure your API key is correct and you have an internet connection.`);
+    } finally {
+      setLoadingPlan(false);
     }
   }
 
@@ -233,15 +382,6 @@ export default function Home() {
         >
           <div className="p-4 border-t border-gray-200 text-gray-600">
             <p>{exercise.details}</p>
-            <button
-              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200 shadow-md"
-              onClick={(e) => {
-                e.stopPropagation();
-                fetchVariations(exercise.name, exercise.muscles);
-              }}
-            >
-              ✨ More Variations
-            </button>
           </div>
         </div>
       </div>
@@ -355,6 +495,71 @@ export default function Home() {
       <div className="space-y-4">
         {legsAbsDayExercises.map((ex, i) => (
           <ExerciseCard key={ex.name} exercise={ex} day="legsabs" idx={i} />
+        ))}
+      </div>
+    );
+  }
+
+  // Helper to render the generated plan in the same style as the static plan
+  function RenderGeneratedPlan({ plan }) {
+    const [openIndexes, setOpenIndexes] = useState({});
+    function toggleAccordion(day, idx) {
+      setOpenIndexes((prev) => ({
+        ...prev,
+        [day]: prev[day] === idx ? null : idx,
+      }));
+    }
+    if (!Array.isArray(plan)) return <div className="text-red-500">{plan}</div>;
+    return (
+      <div className="space-y-8">
+        {plan.map((dayObj, dayIdx) => (
+          <div key={dayObj.day} className="mb-8">
+            <h3 className="text-xl font-bold mb-4" style={{ color: "#3D405B" }}>{dayObj.day}</h3>
+            <div className="space-y-4">
+              {dayObj.exercises.map((exercise, idx) => {
+                const isOpen = openIndexes[dayObj.day] === idx;
+                const youtubeSearch = `https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name + ' exercise tutorial')}`;
+                return (
+                  <div key={exercise.name} className="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+                    <div
+                      className="accordion-header p-4 flex justify-between items-center cursor-pointer"
+                      onClick={() => toggleAccordion(dayObj.day, idx)}
+                    >
+                      <div>
+                        <h4 className="font-bold text-lg">{exercise.name}</h4>
+                        <p className="text-sm text-gray-500">{exercise.details}</p>
+                      </div>
+                      <div className="flex items-center space-x-4">
+                        <span className="font-semibold text-sm text-gray-700">{exercise.sets} sets / {exercise.reps} reps</span>
+                        <span
+                          className="accordion-arrow text-xl"
+                          style={{ color: "#E07A5F", transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                        >
+                          ▼
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      className="accordion-content"
+                      style={{ maxHeight: isOpen ? 300 : 0 }}
+                    >
+                      <div className="p-4 border-t border-gray-200 text-gray-600 flex flex-col items-center">
+                        <a
+                          href={youtubeSearch}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="mb-4 px-4 py-2 bg-white text-accent1 border border-accent1 rounded-md font-semibold shadow hover:bg-accent1 hover:text-white transition-colors"
+                        >
+                          Watch Tutorial
+                        </a>
+                        <p>{exercise.details}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         ))}
       </div>
     );
@@ -485,6 +690,87 @@ export default function Home() {
               <p className="mt-3 font-semibold w-40">Use Harder Variations</p>
             </div>
           </div>
+        </section>
+        {/* Move Plan Generator section below the static sections */}
+        <section id="ai-generator" className="bg-white p-6 sm:p-8 rounded-xl shadow-md mt-12">
+          <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: "#3D405B" }}>
+            AI-Powered Custom Workout Generator
+          </h2>
+          <div className="space-y-4 max-w-2xl mx-auto">
+            <div>
+              <label htmlFor="routine" className="block text-sm font-medium text-gray-700">
+                Workout Split
+              </label>
+              <select
+                id="routine"
+                value={routineInput}
+                onChange={e => setRoutineInput(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent2 focus:border-accent2"
+              >
+                {routineOptions.map(opt => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+              {routineInput === "Other" && (
+                <input
+                  type="text"
+                  className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent2 focus:border-accent2"
+                  placeholder="Enter custom split"
+                  value={routineInput.startsWith('Other:') ? routineInput.slice(6) : ''}
+                  onChange={e => setRoutineInput('Other:' + e.target.value)}
+                />
+              )}
+            </div>
+            <div>
+              <label htmlFor="equipment" className="block text-sm font-medium text-gray-700">
+                Available Equipment
+              </label>
+              <select
+                id="equipment"
+                value={equipmentInput}
+                onChange={e => setEquipmentInput(e.target.value)}
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent2 focus:border-accent2"
+              >
+                {equipmentOptions.map(opt => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+              {equipmentInput === "Other" && (
+                <input
+                  type="text"
+                  className="mt-2 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-accent2 focus:border-accent2"
+                  placeholder="Enter custom equipment"
+                  value={equipmentInput.startsWith('Other:') ? equipmentInput.slice(6) : ''}
+                  onChange={e => setEquipmentInput('Other:' + e.target.value)}
+                />
+              )}
+            </div>
+            <button
+              onClick={handleGeneratePlan}
+              disabled={loadingPlan}
+              className="w-full py-3 px-4 bg-white text-accent1 border border-accent1 font-semibold rounded-md shadow hover:bg-accent1 hover:text-white transition-colors text-lg mt-4 disabled:bg-gray-200 disabled:text-gray-400 disabled:border-gray-200"
+            >
+              {loadingPlan ? 'Generating...' : 'Generate Plan with AI'}
+            </button>
+          </div>
+          {/* Display area for the generated plan */}
+          {loadingPlan && (
+            <div className="mt-8 text-center">
+              <div className="loading-spinner"></div>
+              <p className="text-gray-500">Generating your custom plan...</p>
+            </div>
+          )}
+          {generatedPlan && !loadingPlan && (
+            <div className="mt-8">
+              <button
+                className="mb-4 px-4 py-2 bg-white text-accent1 border border-accent1 rounded-md font-semibold shadow hover:bg-accent1 hover:text-white transition-colors"
+                onClick={() => setGeneratedPlanCollapsed((prev) => !prev)}
+              >
+                {generatedPlanCollapsed ? 'Show Generated Plan' : 'Hide Generated Plan'}
+              </button>
+              {!generatedPlanCollapsed && <RenderGeneratedPlan plan={generatedPlan} />}
+            </div>
+          )}
         </section>
       </main>
       <footer className="text-center mt-12 py-6 border-t border-gray-200 bg-black rounded-xl">
