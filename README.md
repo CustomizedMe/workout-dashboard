@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Interactive Home Workout Dashboard
+
+A modern, interactive workout dashboard built with Next.js, Tailwind CSS, and Chart.js. This app provides a Push/Pull/Legs & Abs workout plan using only bodyweight and resistance bands, with interactive charts, exercise details, and AI-powered exercise variations.
+
+## Features
+
+- **Tabbed Navigation:** Switch between Push, Pull, and Legs & Abs days, with sub-tabs for different routines.
+- **Interactive Exercise Cards:** Click to expand for details and get AI-powered exercise variations.
+- **Charts:** Visualize workout time distribution and muscle group focus using Chart.js.
+- **Progression Path:** Clear steps for progressive overload.
+- **Responsive Design:** Looks great on all devices.
+- **Modern UI:** Built with Tailwind CSS and custom styles.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router, React 18)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Chart.js](https://www.chartjs.org/) & [react-chartjs-2](https://react-chartjs-2.js.org/)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js (v16+ recommended)
+- npm (or yarn)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd workout-dashboard
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Customization
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **AI-Powered Variations:**
+  - The "✨ More Variations" button uses the Google Gemini API. To enable, replace the placeholder API key in `src/app/page.js` with your own.
+- **Styling:**
+  - Edit `tailwind.config.js` and `src/app/globals.css` for custom colors and styles.
+- **Content:**
+  - All exercise data and chart data are in `src/app/page.js` for easy editing.
 
-## Learn More
+## Credits
+- Workout plan and UI inspired by modern fitness dashboards.
+- Built by [Your Name].
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+[MIT](LICENSE)

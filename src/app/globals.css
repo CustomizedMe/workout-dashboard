@@ -21,6 +21,75 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: #3D405B;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom styles from original HTML */
+.chart-container { position: relative; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; height: 300px; max-height: 350px; }
+@media (min-width: 768px) { .chart-container { height: 350px; max-height: 400px; } }
+.tab-active { background-color: #E07A5F; color: white; }
+.tab-inactive { background-color: #E0E0E0; color: #3D405B; }
+.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+.accordion-arrow { transition: transform 0.3s ease-out; }
+.sub-tab-active { background-color: #81B29A; color: white; }
+.sub-tab-inactive { background-color: #D3E4DA; color: #3D405B; }
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+.modal-content {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.modal-overlay.open .modal-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+.close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #3D405B;
+}
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3D405B;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
