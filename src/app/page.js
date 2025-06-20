@@ -520,7 +520,7 @@ export default function Home() {
                 const isOpen = openIndexes[dayObj.day] === idx;
                 const youtubeSearch = `https://www.youtube.com/results?search_query=${encodeURIComponent(exercise.name + ' exercise tutorial')}`;
                 return (
-                  <div key={exercise.name} className="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
+                  <div key={exercise.name + '-' + idx} className="bg-white rounded-lg shadow-sm border border-gray-200 mb-4">
                     <div
                       className="accordion-header p-4 flex justify-between items-center cursor-pointer"
                       onClick={() => toggleAccordion(dayObj.day, idx)}
