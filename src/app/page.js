@@ -174,7 +174,9 @@ export default function Home() {
     // Placeholder API key
     const apiKey = "AIzaSyD-PLACEHOLDER-KEY";
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-    const prompt = `As an expert fitness coach, suggest 3 beginner and 3 advanced variations for the \"${exerciseName}\" exercise, which primarily targets ${muscleGroup}. For each variation, provide a very brief explanation of how to perform it or its key benefit. Format the response in Markdown with clear headings for 'Beginner Variations' and 'Advanced Variations'.`;
+
+
+    const prompt = `As an expert fitness coach, suggest 3 beginner and 3 advanced variations for the "${exerciseName}" exercise, which primarily targets ${muscleGroup}. For each variation, provide a very brief explanation of how to perform it or its key benefit. Format the response in Markdown with clear headings for 'Beginner Variations' and 'Advanced Variations'.`;
     const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
     const payload = { contents: chatHistory };
     try {
@@ -391,7 +393,7 @@ export default function Home() {
         <section id="structure" className="bg-white p-6 sm:p-8 rounded-xl shadow-md">
           <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: "#3D405B" }}>Plan Structure & Muscle Focus</h2>
           <p className="max-w-3xl mx-auto text-center text-gray-600 mb-8">
-            This plan splits workouts into "Push", "Pull", and "Legs & Abs" days to target different muscle groups effectively, allowing for focused training and optimal recovery. The charts below visualize how each session is structured by time and which muscle groups are prioritized.
+            This plan splits workouts into &quot;Push&quot;, &quot;Pull&quot;, and &quot;Legs & Abs&quot; days to target different muscle groups effectively, allowing for focused training and optimal recovery. The charts below visualize how each session is structured by time and which muscle groups are prioritized.
           </p>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div>
@@ -412,7 +414,7 @@ export default function Home() {
         <section id="workouts" className="bg-black rounded-xl p-6">
           <h2 className="text-2xl font-bold mb-6 text-center" style={{ color: "#F5F5F5" }}>Daily Workout Details</h2>
           <p className="max-w-3xl mx-auto text-center mb-8" style={{ color: "#F5F5F5" }}>
-            Select a workout day to see the full list of exercises. Click on any exercise to view detailed instructions on how to perform it correctly. Use the "✨ More Variations" button for AI-powered suggestions!
+            Select a workout day to see the full list of exercises. Click on any exercise to view detailed instructions on how to perform it correctly. Use the &quot;✨ More Variations&quot; button for AI-powered suggestions!
           </p>
           <div className="flex justify-center mb-6">
             <button
